@@ -32,3 +32,4 @@ window.onscroll = () => {
   menuBar.classList.remove("bx-x");
   navbar.classList.remove("active");
 };
+

@@ -33,3 +33,27 @@ window.onscroll = () => {
   navbar.classList.remove("active");
 };
 
+// Animation for skill cards
+document.addEventListener('DOMContentLoaded', function() {
+  const skillCards = document.querySelectorAll('.skill-card');
+  
+  const animateCards = () => {
+      skillCards.forEach((card, index) => {
+          setTimeout(() => {
+              card.classList.add('visible');
+          }, 150 * index);
+      });
+  };
+  
+  // Intersection Observer for scroll animation
+  const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              animateCards();
+              observer.unobserve(entry.target);
+          }
+      });
+  }, { threshold: 0.1 });
+  
+  observer.observe(document.querySelector('.skills-container'));
+});
